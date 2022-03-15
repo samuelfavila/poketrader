@@ -1,10 +1,10 @@
 import React from "react";
 import "./style.css";
 
-const PokemonCard = ({ id, image, name, type, baseXp }) => {
+const PokemonCard = ({ id, image, name, type, baseXp, onClick }) => {
 	const style = type + " card-container";
 	return (
-		<div className={style}>
+		<div className={style} onClick={onClick}>
 			<div className="id">
 				<small>#0{id}</small>
 			</div>

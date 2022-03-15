@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./style.css";
 import PokemonCard from "../PokemonCard";
 
-const PokemonSelectorModal = ({ setIsOpen }) => {
-	const [allPokemons, setAllPokemons] = useState([]);
+const PokemonSelectorModal = ({
+	setIsOpen,
+	allPokemons,
+	setAllPokemons,
+	selectPokemon,
+}) => {
+	// const [pokemonInput, setPokemonInput] = useState("");
+	// pokemonInput = document.querySelector(".pokemon-input");
 	const [loadMore, setLoadMore] = useState(
 		"https://pokeapi.co/api/v2/pokemon?limit=20"
 	);
@@ -14,26 +20,19 @@ const PokemonSelectorModal = ({ setIsOpen }) => {
 
 		setLoadMore(data.next);
 
-		function createPokemonObject(results) {
-			results.forEach(async (pokemon) => {
+		async function createPokemonObject(results) {
+			let pokemonList = [];
+			for (let pokemon of results) {
 				const res = await fetch(
 					`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
 				);
 				const data = await res.json();
-				setAllPokemons((currentList) => [...currentList, data]);
-			});
+				pokemonList.push(data);
+			}
+			setAllPokemons((currentList) => [...currentList, ...pokemonList]);
 		}
 		createPokemonObject(data.results);
 	};
-
-	// const [selectedPokemon, setSelectedPokemon] = useState(
-	// 	`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
-	// );
-
-	// const getOnePokemon = async () => {
-	// 	const res = await fetch(selectedPokemon);
-	// 	const data = await res.json();
-	// };
 
 	useEffect(() => {
 		getAllPokemons();
@@ -41,10 +40,15 @@ const PokemonSelectorModal = ({ setIsOpen }) => {
 
 	return (
 		<div className="modal-container">
-			<h1>Selecione um Pokemon</h1>
+			<h1>Selecione de 1 a 6 Pokemon</h1>
 			<button onClick={setIsOpen}>X</button>
 			<div className="wrapper">
-				<input type="text" />
+				{/* <input
+					type="text"
+					className="pokemon-input"
+					 value={pokemonInput}
+					 onChange={(e) => setPokemonInput(e.target.value)}
+				/> */}
 				<div className="pokemon-list">
 					{allPokemons.map((pokemon, index) => (
 						<PokemonCard
@@ -54,6 +58,7 @@ const PokemonSelectorModal = ({ setIsOpen }) => {
 							name={pokemon.name}
 							type={pokemon.types[0].type.name}
 							baseXp={pokemon.base_experience}
+							onClick={() => selectPokemon(pokemon.id)}
 						/>
 					))}
 				</div>
