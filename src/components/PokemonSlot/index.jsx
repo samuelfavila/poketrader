@@ -16,7 +16,7 @@ const PokemonSlot = ({ xpTotal, setXpTotal }) => {
 	// const elemnentSelectedPokemons = document.querySelector('.selected-pokemons');
 
 	function selectPokemon(pokemon) {
-		setInstruction("");
+		setInstruction("Clique aqui para trocar sua combinação");
 		if (selectedPokemons.length >= 6) {
 			setMessage(
 				"Você já escolheu 6 pokemons! Reitire um para colocar outro."
@@ -44,16 +44,15 @@ const PokemonSlot = ({ xpTotal, setXpTotal }) => {
 
 	return (
 		<div className="pokemon-container">
-			<h3 className="message">{message}</h3>
+			<h2
+				className="instruction"
+				onClick={() => {
+					setIsOpen(!isOpen);
+				}}
+			>
+				{instruction}
+			</h2>
 			<div className="selected-pokemons">
-				<h2
-					className="instruction"
-					onClick={() => {
-						setIsOpen(!isOpen);
-					}}
-				>
-					{instruction}
-				</h2>
 				{selectedPokemons.map(({ id }, index) => {
 					// console.log(allPokemons, pokemonId);
 					const pokemon = allPokemons[id - 1];
@@ -70,6 +69,7 @@ const PokemonSlot = ({ xpTotal, setXpTotal }) => {
 					);
 				})}
 			</div>
+			<h3 className="message">{message}</h3>
 			<h3 className="total-basexp">{xpMessage}</h3>
 			{isOpen && (
 				<PokemonSelectorModal
