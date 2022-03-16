@@ -5,6 +5,9 @@ import PokemonCard from "../PokemonCard";
 
 const PokemonSlot = ({ xpTotal, setXpTotal }) => {
 	const [allPokemons, setAllPokemons] = useState([]);
+	const [loadMore, setLoadMore] = useState(
+		"https://pokeapi.co/api/v2/pokemon?limit=20"
+	);
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedPokemons, setSelectedPokemons] = useState([]);
 	const [message, setMessage] = useState("");
@@ -75,8 +78,10 @@ const PokemonSlot = ({ xpTotal, setXpTotal }) => {
 				<PokemonSelectorModal
 					setIsOpen={() => setIsOpen(!isOpen)}
 					allPokemons={allPokemons}
+					loadMore={loadMore}
 					setAllPokemons={setAllPokemons}
 					selectPokemon={selectPokemon}
+					setLoadMore={setLoadMore}
 				/>
 			)}
 		</div>

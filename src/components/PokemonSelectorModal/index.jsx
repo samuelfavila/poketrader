@@ -7,12 +7,11 @@ const PokemonSelectorModal = ({
 	allPokemons,
 	setAllPokemons,
 	selectPokemon,
+	loadMore,
+	setLoadMore,
 }) => {
 	// const [pokemonInput, setPokemonInput] = useState("");
 	// pokemonInput = document.querySelector(".pokemon-input");
-	const [loadMore, setLoadMore] = useState(
-		"https://pokeapi.co/api/v2/pokemon?limit=20"
-	);
 
 	const getAllPokemons = async () => {
 		const res = await fetch(loadMore);
@@ -35,7 +34,9 @@ const PokemonSelectorModal = ({
 	};
 
 	useEffect(() => {
-		getAllPokemons();
+		if (allPokemons.length === 0) {
+			getAllPokemons();
+		}
 	}, []);
 
 	return (
