@@ -13,6 +13,12 @@ const PokemonSlot = () => {
 		setSelectedPokemons((currentList) => [...currentList, id]);
 	}
 
+	function removeSelectedPokemon(index) {
+		const newSelectedPokemons = [...selectedPokemons];
+		newSelectedPokemons.splice(index, 1);
+		setSelectedPokemons(newSelectedPokemons);
+	}
+
 	return (
 		<div className="pokemon-container">
 			<h2
@@ -34,7 +40,7 @@ const PokemonSlot = () => {
 							name={pokemon.name}
 							type={pokemon.types[0].type.name}
 							baseXp={pokemon.base_experience}
-							// 	onClick={removeSelectedPokemon}
+							onClick={() => removeSelectedPokemon(index)}
 						/>
 					);
 				})}
