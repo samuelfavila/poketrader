@@ -1,8 +1,12 @@
 .pokemon-container {
 	width: 100vw;
-	height: 100vh;
+	height: fit-content;
 }
 
 .selected-pokemons {
 	display: flex;
+}
+
+.aviso {
+	color: red;
 }

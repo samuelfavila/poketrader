@@ -10,6 +10,12 @@ const PokemonSlot = () => {
 	// const elemnentSelectedPokemons = document.querySelector('.selected-pokemons');
 
 	function selectPokemon(id) {
+		if (selectedPokemons.length >= 6) {
+			document.querySelector("h3").innerHTML =
+				"Você já escolheu 6 pokemons, remova 1 para adicionar outro";
+			return;
+		}
+
 		setSelectedPokemons((currentList) => [...currentList, id]);
 	}
 
@@ -17,6 +23,7 @@ const PokemonSlot = () => {
 		const newSelectedPokemons = [...selectedPokemons];
 		newSelectedPokemons.splice(index, 1);
 		setSelectedPokemons(newSelectedPokemons);
+		document.querySelector("h3").innerHTML = "";
 	}
 
 	return (
@@ -26,8 +33,9 @@ const PokemonSlot = () => {
 					setIsOpen(!isOpen);
 				}}
 			>
-				Escolher pokemon para troca
+				Clique aqui para selecionar seus pokemons!
 			</h2>
+			<h3 className="aviso"></h3>
 			<div className="selected-pokemons">
 				{selectedPokemons.map((pokemonId, index) => {
 					// console.log(allPokemons, pokemonId);
