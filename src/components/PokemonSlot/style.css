@@ -5,10 +5,19 @@
 
 .selected-pokemons {
 	display: flex;
+	background-color: #ffffff;
+	padding: 1em;
+	border-radius: 1em;
+	margin: 1em;
+}
+
+.instruction {
+	cursor: pointer;
 }
 
 .message {
-	color: red;
+	color: black;
+	font-weight: bold;
 }
 
 .total-basexp {

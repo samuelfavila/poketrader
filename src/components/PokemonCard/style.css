@@ -46,8 +46,10 @@
 	border: 3px solid #000;
 }
 
-h3 {
-	margin-bottom: 0.2rem;
+.detail-wrapper h3 {
+	margin-bottom: 0.4rem;
+	font-weight: bold;
+	font-size: 1.2em;
 }
 .card-container .id {
 	border-radius: 1rem;

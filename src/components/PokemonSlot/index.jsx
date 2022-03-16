@@ -9,9 +9,14 @@ const PokemonSlot = ({ xpTotal, setXpTotal }) => {
 	const [selectedPokemons, setSelectedPokemons] = useState([]);
 	const [message, setMessage] = useState("");
 	const [xpMessage, setXpMessage] = useState(0);
+	const [instruction, setInstruction] = useState(
+		"Clique aqui para selecionar seus pokemons!"
+	);
+
 	// const elemnentSelectedPokemons = document.querySelector('.selected-pokemons');
 
 	function selectPokemon(pokemon) {
+		setInstruction("");
 		if (selectedPokemons.length >= 6) {
 			setMessage(
 				"Você já escolheu 6 pokemons! Reitire um para colocar outro."
@@ -30,21 +35,25 @@ const PokemonSlot = ({ xpTotal, setXpTotal }) => {
 		newSelectedPokemons.splice(index, 1);
 		setXpTotal(newMessage);
 		setXpMessage(newMessage);
+		if (newSelectedPokemons.length === 0) {
+			setInstruction("Clique aqui para selecionar seus pokemons!");
+		}
 		setSelectedPokemons(newSelectedPokemons);
 		setMessage("");
 	}
 
 	return (
 		<div className="pokemon-container">
-			<h2
-				onClick={() => {
-					setIsOpen(!isOpen);
-				}}
-			>
-				Clique aqui para selecionar seus pokemons!
-			</h2>
 			<h3 className="message">{message}</h3>
 			<div className="selected-pokemons">
+				<h2
+					className="instruction"
+					onClick={() => {
+						setIsOpen(!isOpen);
+					}}
+				>
+					{instruction}
+				</h2>
 				{selectedPokemons.map(({ id }, index) => {
 					// console.log(allPokemons, pokemonId);
 					const pokemon = allPokemons[id - 1];

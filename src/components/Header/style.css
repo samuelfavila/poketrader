@@ -1,8 +1,11 @@
 .container-header {
 	text-align: center;
-	background-color: #ef5350;
+	background-color: #cc0000;
 }
 
 .container-header h1 {
 	color: white;
+	font-weight: bold;
+	padding: 0.5em 0;
+	font-size: 2em;
 }

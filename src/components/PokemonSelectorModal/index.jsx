@@ -40,8 +40,12 @@ const PokemonSelectorModal = ({
 
 	return (
 		<div className="modal-container">
-			<h1>Selecione de 1 a 6 Pokemon</h1>
-			<button onClick={setIsOpen}>X</button>
+			<h2 className="modal-title" onClick={setIsOpen}>
+				Selecione de 1 a 6 Pokemon
+			</h2>
+			<button onClick={setIsOpen} className="close-modal-button">
+				X
+			</button>
 			<div className="wrapper">
 				{/* <input
 					type="text"
@@ -61,10 +65,10 @@ const PokemonSelectorModal = ({
 							onClick={() => selectPokemon(pokemon)}
 						/>
 					))}
+					<button className="load-more" onClick={() => getAllPokemons()}>
+						Ver mais
+					</button>
 				</div>
-				<button className="load-more" onClick={() => getAllPokemons()}>
-					Ver mais
-				</button>
 			</div>
 		</div>
 	);
