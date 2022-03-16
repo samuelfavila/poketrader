@@ -7,6 +7,15 @@
 	display: flex;
 }
 
-.aviso {
+.message {
 	color: red;
+}
+
+.total-basexp {
+	width: fit-content;
+	padding: 10px;
+	margin: 0 auto;
+	border: 2px solid #436291;
+	background-color: #fecb3d;
+	color: #436291;
 }

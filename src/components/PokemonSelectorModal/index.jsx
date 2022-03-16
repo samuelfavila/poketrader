@@ -58,7 +58,7 @@ const PokemonSelectorModal = ({
 							name={pokemon.name}
 							type={pokemon.types[0].type.name}
 							baseXp={pokemon.base_experience}
-							onClick={() => selectPokemon(pokemon.id)}
+							onClick={() => selectPokemon(pokemon)}
 						/>
 					))}
 				</div>

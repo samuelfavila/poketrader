@@ -1,10 +1,12 @@
 import React from "react";
 import "./style.css";
 
-const TradeButton = () => {
+const TradeButton = ({ onClick }) => {
 	return (
 		<div>
-			<button className="trade-button">Simular Troca</button>
+			<button className="trade-button" onClick={onClick}>
+				Simular Troca
+			</button>
 		</div>
 	);
 };
