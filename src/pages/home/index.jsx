@@ -3,8 +3,21 @@ import "./style.css";
 import Header from "../../components/Header";
 import PokemonSlot from "../../components/PokemonSlot";
 import TradeButton from "../../components/TradeButton";
+import Trade from "../../components/Trade";
 
 const Home = () => {
+	const [allPokemons, setAllPokemons] = useState([]);
+	const [loadMore, setLoadMore] = useState(
+		"https://pokeapi.co/api/v2/pokemon?limit=20"
+	);
+	const [
+		selectedPokemonsFirstCombination,
+		setSelectedPokemonsFirstCombination,
+	] = useState([]);
+	const [
+		selectedPokemonsSecondCombination,
+		setSelectedPokemonsSecondCombination,
+	] = useState([]);
 	const [xpFirstCombination, setXpFirstCombination] = useState(0);
 	const [xpSecondCombination, setXpSecondCombination] = useState(0);
 	const [resultMessage, setResultMessage] = useState("");
@@ -35,15 +48,38 @@ const Home = () => {
 				<PokemonSlot
 					xpTotal={xpFirstCombination}
 					setXpTotal={setXpFirstCombination}
+					allPokemons={allPokemons}
+					setAllPokemons={setAllPokemons}
+					loadMore={loadMore}
+					setLoadMore={setLoadMore}
+					selectedPokemons={selectedPokemonsFirstCombination}
+					setSelectedPokemons={setSelectedPokemonsFirstCombination}
 				/>
 				<PokemonSlot
 					xpTotal={xpSecondCombination}
 					setXpTotal={setXpSecondCombination}
+					allPokemons={allPokemons}
+					setAllPokemons={setAllPokemons}
+					loadMore={loadMore}
+					setLoadMore={setLoadMore}
+					selectedPokemons={selectedPokemonsSecondCombination}
+					setSelectedPokemons={setSelectedPokemonsSecondCombination}
 				/>
 			</div>
-			<div className="wrapper">
-				<p className="result-message">{resultMessage}</p>
-				<TradeButton onClick={simulateTrade} />
+
+			<p className="result-message">{resultMessage}</p>
+
+			<div className="history-container">
+				<Trade
+					onClick={simulateTrade}
+					selectedPokemonsFirstCombination={
+						selectedPokemonsFirstCombination
+					}
+					selectedPokemonsSecondCombination={
+						selectedPokemonsSecondCombination
+					}
+					allPokemons={allPokemons}
+				/>
 			</div>
 		</div>
 	);

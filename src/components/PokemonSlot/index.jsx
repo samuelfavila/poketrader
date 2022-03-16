@@ -3,20 +3,22 @@ import "./style.css";
 import PokemonSelectorModal from "../PokemonSelectorModal";
 import PokemonCard from "../PokemonCard";
 
-const PokemonSlot = ({ xpTotal, setXpTotal }) => {
-	const [allPokemons, setAllPokemons] = useState([]);
-	const [loadMore, setLoadMore] = useState(
-		"https://pokeapi.co/api/v2/pokemon?limit=20"
-	);
+const PokemonSlot = ({
+	xpTotal,
+	setXpTotal,
+	allPokemons,
+	setAllPokemons,
+	loadMore,
+	setLoadMore,
+	selectedPokemons,
+	setSelectedPokemons,
+}) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedPokemons, setSelectedPokemons] = useState([]);
 	const [message, setMessage] = useState("");
 	const [xpMessage, setXpMessage] = useState(0);
 	const [instruction, setInstruction] = useState(
 		"Clique aqui para selecionar seus pokemons!"
 	);
-
-	// const elemnentSelectedPokemons = document.querySelector('.selected-pokemons');
 
 	function selectPokemon(pokemon) {
 		setInstruction("Clique aqui para trocar sua combinação");
@@ -57,7 +59,6 @@ const PokemonSlot = ({ xpTotal, setXpTotal }) => {
 			</h2>
 			<div className="selected-pokemons">
 				{selectedPokemons.map(({ id }, index) => {
-					// console.log(allPokemons, pokemonId);
 					const pokemon = allPokemons[id - 1];
 					return (
 						<PokemonCard
