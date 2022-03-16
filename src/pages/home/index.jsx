@@ -7,13 +7,14 @@ import TradeButton from "../../components/TradeButton";
 const Home = () => {
 	const [xpFirstCombination, setXpFirstCombination] = useState(0);
 	const [xpSecondCombination, setXpSecondCombination] = useState(0);
+	const [resultMessage, setResultMessage] = useState("");
 
 	const simulateTrade = () => {
 		const subtractFirstFromSecond = xpSecondCombination - xpFirstCombination;
 		const subtractSecondFromFirst = xpFirstCombination - xpSecondCombination;
 
 		if (xpSecondCombination === 0 || xpFirstCombination === 0) {
-			alert("Troca inválida! Selecione os pokemons.");
+			setResultMessage("Troca inválida! Selecione os pokemons.");
 			return;
 		}
 
@@ -21,9 +22,9 @@ const Home = () => {
 			(subtractFirstFromSecond < 50 && subtractFirstFromSecond >= 0) ||
 			(subtractSecondFromFirst < 50 && subtractSecondFromFirst >= 0)
 		) {
-			alert("Troca justa!");
+			setResultMessage("Troca justa!");
 		} else {
-			alert("Troca injusta!");
+			setResultMessage("Troca injusta!");
 		}
 	};
 
@@ -40,7 +41,10 @@ const Home = () => {
 					setXpTotal={setXpSecondCombination}
 				/>
 			</div>
-			<TradeButton onClick={simulateTrade} />
+			<div className="wrapper">
+				<p className="result-message">{resultMessage}</p>
+				<TradeButton onClick={simulateTrade} />
+			</div>
 		</div>
 	);
 };

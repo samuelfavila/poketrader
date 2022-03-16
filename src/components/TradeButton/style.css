@@ -1,5 +1,9 @@
 .trade-button {
-	margin: 30px;
 	color: #fff;
-	background-color: red;
+	background-color: #ff0000;
+	border: none;
+	margin: 1rem auto;
+	padding: 1rem;
+	font-weight: bold;
+	box-shadow: 3px 3px #cc0000;
 }
