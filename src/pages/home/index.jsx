@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./style.css";
 import Header from "../../components/Header";
 import PokemonSlot from "../../components/PokemonSlot";
-import TradeButton from "../../components/TradeButton";
 import Trade from "../../components/Trade";
 
 const Home = () => {
@@ -18,9 +17,10 @@ const Home = () => {
 		selectedPokemonsSecondCombination,
 		setSelectedPokemonsSecondCombination,
 	] = useState([]);
+	const [tradeValue, setTradeValue] = useState();
 	const [xpFirstCombination, setXpFirstCombination] = useState(0);
 	const [xpSecondCombination, setXpSecondCombination] = useState(0);
-	const [resultMessage, setResultMessage] = useState("");
+	const [resultMessage, setResultMessage] = useState(false);
 
 	const simulateTrade = () => {
 		const subtractFirstFromSecond = xpSecondCombination - xpFirstCombination;
@@ -35,8 +35,10 @@ const Home = () => {
 			(subtractFirstFromSecond < 50 && subtractFirstFromSecond >= 0) ||
 			(subtractSecondFromFirst < 50 && subtractSecondFromFirst >= 0)
 		) {
+			setTradeValue(true);
 			setResultMessage("Troca justa!");
 		} else {
+			setTradeValue(false);
 			setResultMessage("Troca injusta!");
 		}
 	};
@@ -79,6 +81,7 @@ const Home = () => {
 						selectedPokemonsSecondCombination
 					}
 					allPokemons={allPokemons}
+					tradeValue={tradeValue}
 				/>
 			</div>
 		</div>

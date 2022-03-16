@@ -16,27 +16,32 @@ const Trade = ({
 		<>
 			<TradeButton onClick={onClick} />
 			<div className="trade-container">
-				<div className="trade">
-					{selectedPokemonsFirstCombination.map(({ id }, index) => {
-						const pokemon = allPokemons[id - 1];
-						return (
-							<PokemonTradeInfo
-								key={index}
-								name={pokemon.name}
-								baseXp={pokemon.base_experience}
-							/>
-						);
-					})}
-					{selectedPokemonsSecondCombination.map(({ id }, index) => {
-						const pokemon = allPokemons[id - 1];
-						return (
-							<PokemonTradeInfo
-								key={index}
-								name={pokemon.name}
-								baseXp={pokemon.base_experience}
-							/>
-						);
-					})}
+				<div className={style}>
+					<div className="combination-wrapper">
+						{selectedPokemonsFirstCombination.map(({ id }, index) => {
+							const pokemon = allPokemons[id - 1];
+							return (
+								<PokemonTradeInfo
+									key={index}
+									name={pokemon.name}
+									baseXp={pokemon.base_experience}
+								/>
+							);
+						})}
+					</div>
+					<p className="separation-line">-----X-----</p>
+					<div className="combination-wrapper">
+						{selectedPokemonsSecondCombination.map(({ id }, index) => {
+							const pokemon = allPokemons[id - 1];
+							return (
+								<PokemonTradeInfo
+									key={index}
+									name={pokemon.name}
+									baseXp={pokemon.base_experience}
+								/>
+							);
+						})}
+					</div>
 				</div>
 			</div>
 		</>

@@ -1,0 +1,15 @@
+.pokemon-info p {
+	margin: 0.5em;
+}
+
+.pokemon-info h3 {
+	margin: 0.5em;
+}
+
+.pokemon-info {
+	width: fit-content;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 1em;
+	border-radius: 1em;
+}
