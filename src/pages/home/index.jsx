@@ -71,19 +71,15 @@ const Home = () => {
 
 			<p className="result-message">{resultMessage}</p>
 
-			<div className="history-container">
-				<Trade
-					onClick={simulateTrade}
-					selectedPokemonsFirstCombination={
-						selectedPokemonsFirstCombination
-					}
-					selectedPokemonsSecondCombination={
-						selectedPokemonsSecondCombination
-					}
-					allPokemons={allPokemons}
-					tradeValue={tradeValue}
-				/>
-			</div>
+			<Trade
+				onClick={simulateTrade}
+				selectedPokemonsFirstCombination={selectedPokemonsFirstCombination}
+				selectedPokemonsSecondCombination={
+					selectedPokemonsSecondCombination
+				}
+				allPokemons={allPokemons}
+				tradeValue={tradeValue}
+			/>
 		</div>
 	);
 };

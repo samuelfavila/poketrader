@@ -14,7 +14,9 @@ const Trade = ({
 
 	return (
 		<>
-			<TradeButton onClick={onClick} />
+			<div className="button-wrapper">
+				<TradeButton onClick={onClick} />
+			</div>
 			<div className="trade-container">
 				<div className={style}>
 					<div className="combination-wrapper">

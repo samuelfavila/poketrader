@@ -22,3 +22,8 @@
 .separation-line {
 	padding: 1em;
 }
+
+.button-wrapper {
+	margin: 1em auto;
+	text-align: center;
+}
