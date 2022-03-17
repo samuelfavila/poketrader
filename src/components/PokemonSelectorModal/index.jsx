@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 import PokemonCard from "../PokemonCard";
 
@@ -10,9 +10,6 @@ const PokemonSelectorModal = ({
 	loadMore,
 	setLoadMore,
 }) => {
-	// const [pokemonInput, setPokemonInput] = useState("");
-	// pokemonInput = document.querySelector(".pokemon-input");
-
 	const getAllPokemons = async () => {
 		const res = await fetch(loadMore);
 		const data = await res.json();
@@ -47,7 +44,7 @@ const PokemonSelectorModal = ({
 			<button onClick={setIsOpen} className="close-modal-button">
 				X
 			</button>
-			<div className="wrapper">
+			<div className="list-wrapper">
 				{/* <input
 					type="text"
 					className="pokemon-input"

@@ -3,14 +3,6 @@
 	height: fit-content;
 }
 
-.selected-pokemons {
-	display: flex;
-	background-color: #ffffff;
-	padding: 1em;
-	border-radius: 1em;
-	margin: 1em;
-}
-
 .instruction {
 	cursor: pointer;
 	margin: 1em auto;
@@ -18,6 +10,14 @@
 	color: #ffffff;
 	padding: 1em;
 	width: fit-content;
+}
+.selected-pokemons {
+	display: flex;
+	background-color: #ffffff;
+	justify-content: space-evenly;
+	padding: 1em;
+	border-radius: 1em;
+	margin: 1em;
 }
 
 .message {

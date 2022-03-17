@@ -1,29 +1,18 @@
-.true {
-	background-color: rgb(226, 248, 225);
-}
-
-.false {
-	background-color: rgb(205, 50, 44);
-}
-
 .trade {
 	display: flex;
-
-	flex-direction: column;
+	flex-direction: column-reverse;
 	text-align: center;
 	padding: 2em;
 	margin: 1em auto;
 }
 
-.combination-wrapper {
-	display: flex;
-}
-
-.separation-line {
-	padding: 1em;
-}
-
 .button-wrapper {
 	margin: 1em auto;
 	text-align: center;
+}
+
+.history-container {
+	border-radius: 1em;
+	margin: 0.3em;
+	background-color: rgba(205, 50, 44, 0.5);
 }

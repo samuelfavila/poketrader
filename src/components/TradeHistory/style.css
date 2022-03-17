@@ -1,0 +1,11 @@
+.combination-wrapper {
+	display: flex;
+}
+
+.separation-line {
+	padding: 1em;
+}
+
+.history-box {
+	display: inline-block;
+}

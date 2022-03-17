@@ -17,7 +17,6 @@ const Home = () => {
 		selectedPokemonsSecondCombination,
 		setSelectedPokemonsSecondCombination,
 	] = useState([]);
-	const [tradeValue, setTradeValue] = useState();
 	const [xpFirstCombination, setXpFirstCombination] = useState(0);
 	const [xpSecondCombination, setXpSecondCombination] = useState(0);
 	const [resultMessage, setResultMessage] = useState(false);
@@ -35,11 +34,30 @@ const Home = () => {
 			(subtractFirstFromSecond < 50 && subtractFirstFromSecond >= 0) ||
 			(subtractSecondFromFirst < 50 && subtractSecondFromFirst >= 0)
 		) {
-			setTradeValue(true);
 			setResultMessage("Troca justa!");
 		} else {
-			setTradeValue(false);
 			setResultMessage("Troca injusta!");
+		}
+
+		const loadHistory = JSON.parse(localStorage.getItem("historyItem"));
+		if (loadHistory) {
+			const history = {
+				tradedPokemonsFirstCombination: selectedPokemonsFirstCombination,
+				tradedPokemonsSecondCombination: selectedPokemonsSecondCombination,
+			};
+			loadHistory.push(history);
+			localStorage.setItem("historyItem", JSON.stringify(loadHistory));
+			console.log(loadHistory);
+		} else {
+			const newLocalStorage = [
+				{
+					tradedPokemonsFirstCombination: selectedPokemonsFirstCombination,
+					tradedPokemonsSecondCombination:
+						selectedPokemonsSecondCombination,
+				},
+			];
+
+			localStorage.setItem("historyItem", JSON.stringify(newLocalStorage));
 		}
 	};
 
@@ -78,7 +96,6 @@ const Home = () => {
 					selectedPokemonsSecondCombination
 				}
 				allPokemons={allPokemons}
-				tradeValue={tradeValue}
 			/>
 		</div>
 	);
