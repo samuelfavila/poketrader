@@ -14,6 +14,7 @@ const Trade = ({ onClick }) => {
 				{historyData
 					? historyData.map((item, index) => (
 							<div className="history-container">
+								<h2>{item.result}</h2>
 								<TradeHistory key={index} historyData={item} />
 							</div>
 					  ))

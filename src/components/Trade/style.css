@@ -14,5 +14,11 @@
 .history-container {
 	border-radius: 1em;
 	margin: 0.3em;
-	background-color: rgba(205, 50, 44, 0.5);
+	background-color: #436291;
+}
+
+.trade h2 {
+	margin-top: 0.6em;
+	font-weight: bold;
+	color: #fecb3d;
 }

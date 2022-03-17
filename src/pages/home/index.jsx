@@ -19,12 +19,12 @@ const Home = () => {
 	] = useState([]);
 	const [xpFirstCombination, setXpFirstCombination] = useState(0);
 	const [xpSecondCombination, setXpSecondCombination] = useState(0);
-	const [resultMessage, setResultMessage] = useState(false);
+	const [resultMessage, setResultMessage] = useState("");
 
 	const simulateTrade = () => {
 		const subtractFirstFromSecond = xpSecondCombination - xpFirstCombination;
 		const subtractSecondFromFirst = xpFirstCombination - xpSecondCombination;
-
+		let result = "";
 		if (xpSecondCombination === 0 || xpFirstCombination === 0) {
 			setResultMessage("Troca inválida! Selecione os pokemons.");
 			return;
@@ -35,8 +35,10 @@ const Home = () => {
 			(subtractSecondFromFirst < 50 && subtractSecondFromFirst >= 0)
 		) {
 			setResultMessage("Troca justa!");
+			result = "Troca justa :)";
 		} else {
 			setResultMessage("Troca injusta!");
+			result = "Troca injusta :(";
 		}
 
 		const loadHistory = JSON.parse(localStorage.getItem("historyItem"));
@@ -44,16 +46,17 @@ const Home = () => {
 			const history = {
 				tradedPokemonsFirstCombination: selectedPokemonsFirstCombination,
 				tradedPokemonsSecondCombination: selectedPokemonsSecondCombination,
+				result: result,
 			};
 			loadHistory.push(history);
 			localStorage.setItem("historyItem", JSON.stringify(loadHistory));
-			console.log(loadHistory);
 		} else {
 			const newLocalStorage = [
 				{
 					tradedPokemonsFirstCombination: selectedPokemonsFirstCombination,
 					tradedPokemonsSecondCombination:
 						selectedPokemonsSecondCombination,
+					result: result,
 				},
 			];
 
