@@ -11,14 +11,14 @@
 	text-align: center;
 }
 
-.history-container {
-	border-radius: 1em;
-	margin: 0.3em;
-	background-color: #436291;
-}
-
 .trade h2 {
 	margin-top: 0.6em;
 	font-weight: bold;
 	color: #fecb3d;
+}
+
+.history-container {
+	border-radius: 1em;
+	margin: 0.3em;
+	background-color: #436291;
 }
