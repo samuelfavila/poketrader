@@ -20,8 +20,9 @@ const Home = () => {
 	const [xpFirstCombination, setXpFirstCombination] = useState(0);
 	const [xpSecondCombination, setXpSecondCombination] = useState(0);
 	const [resultMessage, setResultMessage] = useState("");
+	const [historyData, setHistoryData] = useState([]);
 
-	const simulateTrade = () => {
+	const simulateTrade = async () => {
 		const subtractFirstFromSecond = xpSecondCombination - xpFirstCombination;
 		const subtractSecondFromFirst = xpFirstCombination - xpSecondCombination;
 		let result = "";
@@ -34,33 +35,47 @@ const Home = () => {
 			(subtractFirstFromSecond < 50 && subtractFirstFromSecond >= 0) ||
 			(subtractSecondFromFirst < 50 && subtractSecondFromFirst >= 0)
 		) {
-			setResultMessage("Troca justa!");
 			result = "Troca justa :)";
+			setResultMessage(result);
 		} else {
-			setResultMessage("Troca injusta!");
 			result = "Troca injusta :(";
+			setResultMessage(result);
 		}
+
+		const tradedPokemonsFirstCombination =
+			selectedPokemonsFirstCombination.map(({ name, base_experience }) => ({
+				name,
+				base_experience,
+			}));
+		const tradedPokemonsSecondCombination =
+			selectedPokemonsSecondCombination.map(({ name, base_experience }) => ({
+				name,
+				base_experience,
+			}));
 
 		const loadHistory = JSON.parse(localStorage.getItem("historyItem"));
 		if (loadHistory) {
 			const history = {
-				tradedPokemonsFirstCombination: selectedPokemonsFirstCombination,
-				tradedPokemonsSecondCombination: selectedPokemonsSecondCombination,
+				tradedPokemonsFirstCombination,
+				tradedPokemonsSecondCombination,
 				result: result,
 			};
 			loadHistory.push(history);
-			localStorage.setItem("historyItem", JSON.stringify(loadHistory));
+			await localStorage.setItem("historyItem", JSON.stringify(loadHistory));
+			setHistoryData(JSON.parse(localStorage.getItem("historyItem")));
 		} else {
 			const newLocalStorage = [
 				{
-					tradedPokemonsFirstCombination: selectedPokemonsFirstCombination,
-					tradedPokemonsSecondCombination:
-						selectedPokemonsSecondCombination,
+					tradedPokemonsFirstCombination,
+					tradedPokemonsSecondCombination,
 					result: result,
 				},
 			];
-
-			localStorage.setItem("historyItem", JSON.stringify(newLocalStorage));
+			await localStorage.setItem(
+				"historyItem",
+				JSON.stringify(newLocalStorage)
+			);
+			setHistoryData(JSON.parse(localStorage.getItem("historyItem")));
 		}
 	};
 
@@ -99,6 +114,8 @@ const Home = () => {
 					selectedPokemonsSecondCombination
 				}
 				allPokemons={allPokemons}
+				historyData={historyData}
+				setHistoryData={setHistoryData}
 			/>
 		</div>
 	);

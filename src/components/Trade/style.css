@@ -11,7 +11,14 @@
 	text-align: center;
 }
 
-.trade h2 {
+.history-title {
+	margin-top: 1.5em;
+	text-align: center;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.history-container h2 {
 	margin-top: 0.6em;
 	font-weight: bold;
 	color: #fecb3d;
@@ -21,4 +28,16 @@
 	border-radius: 1em;
 	margin: 0.3em;
 	background-color: #436291;
+}
+
+.invalid-trade-container h2 {
+	margin-top: 0.6em;
+	font-weight: bold;
+	color: #436291;
+}
+
+.invalid-trade-container {
+	border-radius: 1em;
+	margin: 0.3em;
+	background-color: #fecb3d;
 }

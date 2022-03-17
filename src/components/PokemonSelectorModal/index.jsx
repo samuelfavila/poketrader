@@ -16,19 +16,20 @@ const PokemonSelectorModal = ({
 
 		setLoadMore(data.next);
 
-		async function createPokemonObject(results) {
-			let pokemonList = [];
-			for (let pokemon of results) {
-				const res = await fetch(
-					`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
-				);
-				const data = await res.json();
-				pokemonList.push(data);
-			}
-			setAllPokemons((currentList) => [...currentList, ...pokemonList]);
-		}
 		createPokemonObject(data.results);
 	};
+
+	async function createPokemonObject(results) {
+		let pokemonList = [];
+		for (let pokemon of results) {
+			const res = await fetch(
+				`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
+			);
+			const data = await res.json();
+			pokemonList.push(data);
+		}
+		setAllPokemons((currentList) => [...currentList, ...pokemonList]);
+	}
 
 	useEffect(() => {
 		if (allPokemons.length === 0) {
@@ -45,12 +46,6 @@ const PokemonSelectorModal = ({
 				X
 			</button>
 			<div className="list-wrapper">
-				{/* <input
-					type="text"
-					className="pokemon-input"
-					 value={pokemonInput}
-					 onChange={(e) => setPokemonInput(e.target.value)}
-				/> */}
 				<div className="pokemon-list">
 					{allPokemons.map((pokemon, index) => (
 						<PokemonCard
